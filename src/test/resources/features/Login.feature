@@ -7,15 +7,15 @@ Feature: Login functionality
   Scenario: Login as librarian
     When user enters librarian username
     And user enters librarian password
-    Then user should see the dashboard as librarian
+    Then user should see the dashboard
 
 
   Scenario: Login as student
     When user enters student username
     And user enters student password
-    Then user should see the dashboard as student
+    Then user should see the dashboard
 
   Scenario: Login as admin
     When user enters admin username
     And user enters admin password
-    Then user should see the dashboard as admin
+    Then user should see the dashboard
