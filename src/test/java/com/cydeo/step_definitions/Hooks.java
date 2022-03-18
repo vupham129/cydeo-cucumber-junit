@@ -1,5 +1,7 @@
 package com.cydeo.step_definitions;
 
+import com.cydeo.utilities.ConfigurationReader;
+import com.cydeo.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
@@ -41,6 +43,16 @@ public class Hooks {
         System.out.println("--------->applying tearDown using @AfterStep");
     }
 
+    @Before ("@GoogleSearchTitle")
+    public void setupForGoogleSearchTitle(){
+        Driver.getDriver().get(ConfigurationReader.getProperty("env"));
+        Driver.getDriver().manage().window().maximize();
+    }
+
+    @After ("@GoogleSearchTitle")
+    public void closingForGoogleSearchTitle(){
+        Driver.closeDriver();
+    }
 
 
 
