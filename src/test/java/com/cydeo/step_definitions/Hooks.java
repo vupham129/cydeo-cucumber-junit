@@ -7,6 +7,8 @@ import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeStep;
 
+import java.util.concurrent.TimeUnit;
+
 /*
 In the class we will be able to pass pre- & post- conditions to
 each scenario and each step
@@ -46,13 +48,23 @@ public class Hooks {
     @Before ("@GoogleSearchTitle")
     public void setupForGoogleSearchTitle(){
         Driver.getDriver().get(ConfigurationReader.getProperty("env"));
-        Driver.getDriver().manage().window().maximize();
     }
 
     @After ("@GoogleSearchTitle")
     public void closingForGoogleSearchTitle(){
         Driver.closeDriver();
     }
+
+    @Before ("@WikipediaSearch")
+    public void setupForWikipediaSearch(){
+        Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
+    }
+
+    @After ("@WikipediaSearch")
+    public void closingForWikipediaSearch(){
+        Driver.closeDriver();
+    }
+
 
 
 
