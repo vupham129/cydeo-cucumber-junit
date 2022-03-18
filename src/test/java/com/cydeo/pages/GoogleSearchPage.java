@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class GoogleSearch_Title {
+public class GoogleSearchPage {
 
-    public GoogleSearch_Title(){
+    public GoogleSearchPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
