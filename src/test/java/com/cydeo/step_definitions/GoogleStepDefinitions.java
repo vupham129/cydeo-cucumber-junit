@@ -19,7 +19,6 @@ public class GoogleStepDefinitions {
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle,expectedTitle);
 
-        Driver.closeDriver();
     }
     GoogleSearchPage googleSearchPage = new GoogleSearchPage();
 
@@ -34,6 +33,5 @@ public class GoogleStepDefinitions {
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals("Title is not matched!",expectedTitle,actualTitle);
 
-        Driver.closeDriver();
     }
 }

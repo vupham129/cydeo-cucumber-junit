@@ -17,7 +17,7 @@ public class WikipediaSearchStepDefinitions {
 
     @Given("user is on Wikipedia home page")
     public void user_is_on_wikipedia_home_page() {
-
+        Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
     }
 
     @When("user types {string} in the wiki search box")
@@ -32,9 +32,10 @@ public class WikipediaSearchStepDefinitions {
     }
 
     @Then("user sees {string} is in the wiki title")
-    public void user_sees_is_in_the_wiki_title(String expectedTitle) {
+    public void user_sees_is_in_the_wiki_title(String wordSearch) {
+        String expectedTitle = wordSearch+" - Wikipedia";
         String actualTitle = Driver.getDriver().getTitle();
-        Assert.assertTrue(actualTitle.contains(expectedTitle));
+        Assert.assertEquals(expectedTitle,actualTitle);
     }
 
     @Then("user sees {string} is in the main header")
@@ -47,6 +48,7 @@ public class WikipediaSearchStepDefinitions {
     public void user_sees_is_in_the_image_header(String expectedTextImage) {
         String actualTextImage = wikipediaSearchPage.imageHeader.getText();
         Assert.assertEquals(expectedTextImage,actualTextImage);
+
     }
 
 }

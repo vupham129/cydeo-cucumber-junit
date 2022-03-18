@@ -2,10 +2,9 @@ package com.cydeo.step_definitions;
 
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
-import io.cucumber.java.BeforeStep;
+import io.cucumber.java.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +15,7 @@ each scenario and each step
 public class Hooks {
 
     // import from io.cucumber.java, not from junit
-    //@Before (order = 1)
+    @Before (order = 1)
     public void setupScenario(){
         System.out.println("===Setting up browser using cucumber @Before");
     }
@@ -29,13 +28,20 @@ public class Hooks {
     public void setupForDatabaseScenarios(){
         System.out.println("===this will only apply to scenarios with @db tag");
     }
-   // @After
-    public void teardownScenario(){
-        System.out.println("===Closing browser using cucumber @After");
-        System.out.println("===Scenario ended/ take screenshot if failed!");
+    @After
+    public void teardownScenario(Scenario scenario){
+        if(scenario.isFailed()){
+            String mediaType = "image/png";
+            String scenarioName = scenario.getName();
+            byte[] screenshot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, mediaType, scenarioName);
+        }
+        Driver.closeDriver();
+        //System.out.println("===Closing browser using cucumber @After");
+       // System.out.println("===Scenario ended/ take screenshot if failed!");
     }
 
-   // @BeforeStep
+    //@BeforeStep
     public void setupStep(){
         System.out.println("-------->applying setup using @BeforeStep");
     }
@@ -43,17 +49,6 @@ public class Hooks {
    // @AfterStep
     public void afterStep(){
         System.out.println("--------->applying tearDown using @AfterStep");
-    }
-
-
-    @Before ("@WikipediaSearch")
-    public void setupForWikipediaSearch(){
-        Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
-    }
-
-    @After ("@WikipediaSearch")
-    public void closingForWikipediaSearch(){
-        Driver.closeDriver();
     }
 
 
