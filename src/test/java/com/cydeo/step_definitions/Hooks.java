@@ -45,15 +45,6 @@ public class Hooks {
         System.out.println("--------->applying tearDown using @AfterStep");
     }
 
-    @Before ("@GoogleSearchTitle")
-    public void setupForGoogleSearchTitle(){
-        Driver.getDriver().get(ConfigurationReader.getProperty("env"));
-    }
-
-    @After ("@GoogleSearchTitle")
-    public void closingForGoogleSearchTitle(){
-        Driver.closeDriver();
-    }
 
     @Before ("@WikipediaSearch")
     public void setupForWikipediaSearch(){
