@@ -16,7 +16,7 @@ each scenario and each step
 public class Hooks {
 
     // import from io.cucumber.java, not from junit
-    @Before (order = 1)
+    //@Before (order = 1)
     public void setupScenario(){
         System.out.println("===Setting up browser using cucumber @Before");
     }
@@ -29,18 +29,18 @@ public class Hooks {
     public void setupForDatabaseScenarios(){
         System.out.println("===this will only apply to scenarios with @db tag");
     }
-    @After
+   // @After
     public void teardownScenario(){
         System.out.println("===Closing browser using cucumber @After");
         System.out.println("===Scenario ended/ take screenshot if failed!");
     }
 
-    @BeforeStep
+   // @BeforeStep
     public void setupStep(){
         System.out.println("-------->applying setup using @BeforeStep");
     }
 
-    @AfterStep
+   // @AfterStep
     public void afterStep(){
         System.out.println("--------->applying tearDown using @AfterStep");
     }

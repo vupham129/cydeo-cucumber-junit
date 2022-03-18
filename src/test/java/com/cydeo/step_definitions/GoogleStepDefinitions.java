@@ -29,9 +29,10 @@ public class GoogleStepDefinitions {
     }
 
     @Then("user should see {string} is in the google title")
-    public void user_should_see_is_in_the_google_title(String expectedTitle) {
+    public void user_should_see_is_in_the_google_title(String wordSearch) {
+        String expectedTitle = wordSearch +" - Google Search";
         String actualTitle = Driver.getDriver().getTitle();
-        Assert.assertTrue(actualTitle.contains(expectedTitle));
+        Assert.assertEquals("Title is not matched!",expectedTitle,actualTitle);
 
         Driver.closeDriver();
     }
