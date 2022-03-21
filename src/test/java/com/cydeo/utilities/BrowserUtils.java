@@ -1,8 +1,12 @@
 package com.cydeo.utilities;
 
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class BrowserUtils {
@@ -40,6 +44,32 @@ public class BrowserUtils {
 
         Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
 
+    }
+
+    /**
+     * This method will accept a String as expected value and verify actual URL contains the value
+     * @param expectedInURL
+     */
+    public static void verifyURLContains(String expectedInURL){
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInURL));
+    }
+
+    /**
+     * This method will accept a dropdown as a WebElement
+     * and return all of the options' text in a list of String
+     * @param dropdownElement
+     * @return List<String> actualOptionsAsString
+     */
+    public static List<String> dropdownOptionsAsString(WebElement dropdownElement){
+        Select select = new Select(dropdownElement);
+        //List of all month <options> as a web element
+        List<WebElement> actualOptionsAsWebElement = select.getOptions();
+        //List of all month <options> as a string
+        List<String> actualOptionsAsString = new ArrayList<>();
+        for (WebElement webElement : actualOptionsAsWebElement) {
+            actualOptionsAsString.add(webElement.getText());
+        }
+        return actualOptionsAsString;
     }
 
 }
