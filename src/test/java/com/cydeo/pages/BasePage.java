@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 /*
 In this class we will store WebElements common to all pages
  */
@@ -27,6 +29,8 @@ public class BasePage {
     @FindBy(xpath = "//button[.='Logout']")
     public WebElement logoutButton;
 
+    @FindBy(xpath = "//tbody//td")
+    public List<WebElement> nameColumn;
 
 
 }

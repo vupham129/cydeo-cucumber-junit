@@ -1,5 +1,6 @@
 package com.cydeo.step_definitions;
 
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
 import io.cucumber.java.*;
@@ -36,6 +37,8 @@ public class Hooks {
             byte[] screenshot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, mediaType, scenarioName);
         }
+
+        BrowserUtils.sleep(5);
         Driver.closeDriver();
         //System.out.println("===Closing browser using cucumber @After");
        // System.out.println("===Scenario ended/ take screenshot if failed!");
