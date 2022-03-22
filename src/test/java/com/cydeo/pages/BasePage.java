@@ -29,8 +29,7 @@ public class BasePage {
     @FindBy(xpath = "//button[.='Logout']")
     public WebElement logoutButton;
 
-    @FindBy(xpath = "//tbody//td")
-    public List<WebElement> nameColumn;
+
 
 
 }

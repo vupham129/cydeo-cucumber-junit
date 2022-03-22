@@ -2,6 +2,7 @@ package com.cydeo.step_definitions;
 
 import com.cydeo.pages.BasePage;
 import com.cydeo.pages.OrderPage;
+import com.cydeo.pages.ViewAllOrdersPage;
 import com.cydeo.pages.WebTableLoginPage;
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigurationReader;
@@ -19,6 +20,7 @@ public class Order_StepDefinitions {
     WebTableLoginPage webTableLoginPage = new WebTableLoginPage();
     BasePage basePage = new BasePage();
     OrderPage orderPage = new OrderPage();
+    ViewAllOrdersPage viewAllOrdersPage = new ViewAllOrdersPage();
 
     @Given("user is already logged in and on order page")
     public void user_is_already_logged_in_and_on_order_page() {
@@ -75,23 +77,20 @@ public class Order_StepDefinitions {
     }
     @When("user enters credit card number {string}")
     public void user_enters_credit_card_number(String string) {
-        orderPage.cardNumber.sendKeys(string);
+        orderPage.cardNoInput.sendKeys(string);
     }
     @When("user enters expiry date {string}")
     public void user_enters_expiry_date(String string) {
-        orderPage.inputExpiryDate.sendKeys(string);
+        orderPage.cardExpInput.sendKeys(string);
     }
     @When("user enters process order button")
     public void user_enters_process_order_button() {
-        orderPage.orderButton.click();
+        orderPage.processButton.click();
     }
     @Then("user should see {string} in first row of the web table")
-    public void user_should_see_in_first_row_of_the_web_table(String name) {
-        for (WebElement each : basePage.nameColumn) {
-            if(each.getText().equals(name)){
-                Assert.assertTrue(each.isDisplayed());
-            }
-        }
+    public void user_should_see_in_first_row_of_the_web_table(String expectedName) {
+       String actualName = viewAllOrdersPage.newCustomerCell.getText();
+       Assert.assertEquals(expectedName,actualName);
     }
 
 }
