@@ -21,7 +21,7 @@ Feature: SmartBear order process
     Examples: Order list
       | product     | quantity | customerName  | street    | city    | state | zip   | cardType | cardNumber  | expirationDate | expectedCustomerName |
       | MyMoney     | 1        | Ken Adams      | Kinzie st | Chicago | IL    | 60004 | Visa     | 313313133315 | 12/22           | Ken Adams              |
-      | FamilyAlbum | 4        | Joey Tribbiani | State st  | Chicago | IL    | 60656 | Visa     | 12343353336  | 12/22           | Joey Tribbiani         |
+      | FamilyAlbum | 4        | Joey Tribbiani | State st  | Chicago | IL    | 60656 | Visa     | 12343353336  | 11/22           | Joey Tribbiani         |
       | MyMoney     | 1        | Ken Adams      | Kinzie st | Chicago | IL    | 60004 | Visa     | 313313133315 | 12/22           | Ken Adams              |
       | MyMoney     | 1        | Ken Adams      | Kinzie st | Chicago | IL    | 60004 | Visa     | 313313133315 | 12/22           | Ken Adams              |
       | MyMoney     | 1        | Ken Adams      | Kinzie st | Chicago | IL    | 60004 | Visa     | 313313133315 | 12/22           | Ken Adams              |
